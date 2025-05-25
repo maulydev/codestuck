@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/og-image.jpg", // You'll need to create this image
+        url: "/og-image.png", // You'll need to create this image
         width: 1200,
         height: 630,
         alt: "CodeStuck - Software Development Support Services",
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
     title: "CodeStuck - Software Development Support Services",
     description:
       "Professional development support services for web, mobile, and desktop applications.",
-    images: ["/twitter-image.jpg"], // You'll need to create this image
+    images: ["/og-image.png"], // You'll need to create this image
   },
   robots: {
     index: true,
