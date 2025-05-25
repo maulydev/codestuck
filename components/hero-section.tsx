@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Code2, ArrowRight, Shield, Star, Zap } from "lucide-react"
+import Image from "next/image"
 
 interface HeroSectionProps {
   themeClasses: any
@@ -15,6 +16,13 @@ export function HeroSection({ themeClasses }: HeroSectionProps) {
       <div className="max-w-6xl mx-auto text-center">
         <div className="mb-8">
           <div className="mb-6">
+            <Image
+              src="/logo.png"
+              alt="Hero Image"
+              width={100}
+              height={100}
+              className="mx-auto rounded-full shadow-lg"  
+              />
             <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent mb-2">
               CodeStuck
             </h1>

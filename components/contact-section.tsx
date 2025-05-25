@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Button } from "@/components/ui/button"
-import { Users, MessageCircle, ArrowRight, Github } from "lucide-react"
+import { Users, MessageCircle, ArrowRight, Github, Loader2, CheckCircle, AlertCircle } from "lucide-react"
 
 interface ContactSectionProps {
   themeClasses: any
@@ -17,13 +17,15 @@ interface ContactSectionProps {
 
 export function ContactSection({ themeClasses, isDarkMode }: ContactSectionProps) {
   const [formData, setFormData] = useState({
-    name: "",
-    contact: "",
-    institution: "",
-    projectTitle: "",
-    helpNeeded: "",
+    name: "Test Name",
+    contact: "0200000001",
+    institution: "Institution",
+    projectTitle: "Some project",
+    helpNeeded: "That help needed",
     githubUrl: "",
   })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<{ success?: string; error?: string } | null>(null)
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData((prev) => ({
@@ -32,10 +34,45 @@ export function ContactSection({ themeClasses, isDarkMode }: ContactSectionProps
     }))
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle form submission
-    console.log("Form submitted:", formData)
+    setIsSubmitting(true)
+    setSubmitStatus(null)
+    
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+      
+      const data = await response.json()
+      
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to submit form')
+      }
+      
+      // Reset form on success
+      setFormData({
+        name: "",
+        contact: "",
+        institution: "",
+        projectTitle: "",
+        helpNeeded: "",
+        githubUrl: "",
+      })
+      
+      setSubmitStatus({ success: 'Your request has been submitted successfully! We will contact you soon.' })
+    } catch (error) {
+      console.error('Error submitting form:', error)
+      setSubmitStatus({ 
+        error: error instanceof Error ? error.message : 'Failed to submit form. Please try again.'
+      })
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -63,6 +100,20 @@ export function ContactSection({ themeClasses, isDarkMode }: ContactSectionProps
             </CardDescription>
           </CardHeader>
           <CardContent>
+            {submitStatus?.success && (
+              <div className="mb-6 p-4 bg-green-100 border border-green-200 rounded-md flex items-center gap-2 text-green-800">
+                <CheckCircle className="w-5 h-5" />
+                <p>{submitStatus.success}</p>
+              </div>
+            )}
+            
+            {submitStatus?.error && (
+              <div className="mb-6 p-4 bg-red-100 border border-red-200 rounded-md flex items-center gap-2 text-red-800">
+                <AlertCircle className="w-5 h-5" />
+                <p>{submitStatus.error}</p>
+              </div>
+            )}
+            
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-2">
@@ -160,11 +211,21 @@ export function ContactSection({ themeClasses, isDarkMode }: ContactSectionProps
 
               <Button
                 type="submit"
+                disabled={isSubmitting}
                 className="w-full bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-600 hover:to-purple-700 text-white border-0 py-6 text-lg font-semibold transform hover:scale-[1.01] transition-all duration-300"
               >
-                <MessageCircle className="w-5 h-5 mr-2" />
-                Send Request
-                <ArrowRight className="w-5 h-5 ml-2" />
+                {isSubmitting ? (
+                  <>
+                    <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+                    Sending...
+                  </>
+                ) : (
+                  <>
+                    <MessageCircle className="w-5 h-5 mr-2" />
+                    Send Request
+                    <ArrowRight className="w-5 h-5 ml-2" />
+                  </>
+                )}
               </Button>
             </form>
           </CardContent>
