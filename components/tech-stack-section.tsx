@@ -60,12 +60,12 @@ export function TechStackSection({ themeClasses, isDarkMode }: TechStackSectionP
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="space-y-2">
+                <div className="space-y-2 flex items-center justify-center flex-wrap">
                   {stack.technologies.map((tech, techIndex) => (
                     <Badge
                       key={techIndex}
                       variant="outline"
-                      className={`${themeClasses.border} ${themeClasses.text} mr-2 mb-2`}
+                      className={`${themeClasses.border} ${themeClasses.text} mr-2`}
                     >
                       {tech}
                     </Badge>
