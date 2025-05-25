@@ -27,8 +27,8 @@ const createEmailTemplate = (data: any) => `
     .header {
       background-color: #0d6efd;
       color: #ffffff;
-      padding: 20px;
-      text-align: center;
+      padding: 10px;
+      text-align: left;
     }
     .header h2 {
       margin: 0;
@@ -98,6 +98,7 @@ const createEmailTemplate = (data: any) => `
     </div>
     <div class="footer">
       &copy; ${new Date().getFullYear()} CodeStuck. All rights reserved.
+      <p>This is an automated email from your contact form submission system.</p>
     </div>
   </div>
 </body>

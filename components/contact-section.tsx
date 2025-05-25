@@ -17,11 +17,11 @@ interface ContactSectionProps {
 
 export function ContactSection({ themeClasses, isDarkMode }: ContactSectionProps) {
   const [formData, setFormData] = useState({
-    name: "Test Name",
-    contact: "0200000001",
-    institution: "Institution",
-    projectTitle: "Some project",
-    helpNeeded: "That help needed",
+    name: "",
+    contact: "",
+    institution: "",
+    projectTitle: "",
+    helpNeeded: "",
     githubUrl: "",
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -140,6 +140,7 @@ export function ContactSection({ themeClasses, isDarkMode }: ContactSectionProps
                     value={formData.contact}
                     onChange={handleInputChange}
                     className={`${themeClasses.inputBg} ${themeClasses.inputBorder} ${isDarkMode ? "text-white" : "text-gray-900"} focus:border-cyan-400`}
+                    required
                     placeholder="Your preferred contact method"
                   />
                 </div>
