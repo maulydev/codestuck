@@ -31,7 +31,7 @@ export function FooterSection({ themeClasses }: FooterSectionProps) {
         </div>
 
         <p className={`${themeClasses.textMuted} text-sm`}>
-          © 2024 CodeStuck. All rights reserved.
+          © {new Date().getFullYear()} CodeStuck. All rights reserved.
           <br />
           Committed to professional integrity and educational excellence.
         </p>
