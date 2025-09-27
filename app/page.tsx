@@ -1,28 +1,29 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Sun, Moon } from "lucide-react"
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Sun, Moon } from "lucide-react";
 
 // Import all section components
-import { HeroSection } from "@/components/hero-section"
-import { AboutSection } from "@/components/about-section"
-import { TechStackSection } from "@/components/tech-stack-section"
-import { ServicesSection } from "@/components/services-section"
-import { HowItWorksSection } from "@/components/how-it-works-section"
-import { DisclaimersSection } from "@/components/disclaimers-section"
-import { ContactSection } from "@/components/contact-section"
-import { FooterSection } from "@/components/footer-section"
+import { HeroSection } from "@/components/hero-section";
+import { AboutSection } from "@/components/about-section";
+import { TechStackSection } from "@/components/tech-stack-section";
+import { ServicesSection } from "@/components/services-section";
+import { HowItWorksSection } from "@/components/how-it-works-section";
+import { DisclaimersSection } from "@/components/disclaimers-section";
+import { ContactSection } from "@/components/contact-section";
+import { FooterSection } from "@/components/footer-section";
 
-import { ParticleBackground } from "@/components/particle-background"
-import { FloatingElements } from "@/components/floating-elements"
+import { ParticleBackground } from "@/components/particle-background";
+import { FloatingElements } from "@/components/floating-elements";
+import TheTeamSection from "@/components/the-team-section";
 
 export default function HomePage() {
-  const [isDarkMode, setIsDarkMode] = useState(true)
+  const [isDarkMode, setIsDarkMode] = useState(true);
 
   const toggleTheme = () => {
-    setIsDarkMode(!isDarkMode)
-  }
+    setIsDarkMode(!isDarkMode);
+  };
 
   const themeClasses = {
     background: isDarkMode ? "bg-slate-950" : "bg-gray-50",
@@ -35,10 +36,12 @@ export default function HomePage() {
     inputBg: isDarkMode ? "bg-slate-800/80" : "bg-white",
     inputBorder: isDarkMode ? "border-slate-600" : "border-gray-300",
     footerBorder: isDarkMode ? "border-slate-800" : "border-gray-200",
-  }
+  };
 
   return (
-    <div className={`min-h-screen ${themeClasses.background} transition-colors duration-300`}>
+    <div
+      className={`min-h-screen ${themeClasses.background} transition-colors duration-300`}
+    >
       {/* Theme Toggle */}
       <div className="fixed top-6 right-6 z-50 hidden">
         <Button
@@ -47,7 +50,11 @@ export default function HomePage() {
           className={`${themeClasses.cardBg} ${themeClasses.border} backdrop-blur-sm hover:scale-105 transition-all duration-300`}
           variant="outline"
         >
-          {isDarkMode ? <Sun className="w-4 h-4 text-yellow-400" /> : <Moon className="w-4 h-4 text-slate-600" />}
+          {isDarkMode ? (
+            <Sun className="w-4 h-4 text-yellow-400" />
+          ) : (
+            <Moon className="w-4 h-4 text-slate-600" />
+          )}
         </Button>
       </div>
 
@@ -58,13 +65,19 @@ export default function HomePage() {
       {/* Animated Background Elements */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         <div
-          className={`absolute top-1/4 left-1/4 w-96 h-96 ${isDarkMode ? "bg-cyan-500/5" : "bg-cyan-500/10"} rounded-full blur-3xl animate-pulse`}
+          className={`absolute top-1/4 left-1/4 w-96 h-96 ${
+            isDarkMode ? "bg-cyan-500/5" : "bg-cyan-500/10"
+          } rounded-full blur-3xl animate-pulse`}
         ></div>
         <div
-          className={`absolute bottom-1/4 right-1/4 w-96 h-96 ${isDarkMode ? "bg-purple-500/5" : "bg-purple-500/10"} rounded-full blur-3xl animate-pulse delay-1000`}
+          className={`absolute bottom-1/4 right-1/4 w-96 h-96 ${
+            isDarkMode ? "bg-purple-500/5" : "bg-purple-500/10"
+          } rounded-full blur-3xl animate-pulse delay-1000`}
         ></div>
         <div
-          className={`absolute top-3/4 left-1/2 w-96 h-96 ${isDarkMode ? "bg-green-500/5" : "bg-green-500/10"} rounded-full blur-3xl animate-pulse delay-2000`}
+          className={`absolute top-3/4 left-1/2 w-96 h-96 ${
+            isDarkMode ? "bg-green-500/5" : "bg-green-500/10"
+          } rounded-full blur-3xl animate-pulse delay-2000`}
         ></div>
       </div>
 
@@ -73,11 +86,12 @@ export default function HomePage() {
         <AboutSection themeClasses={themeClasses} isDarkMode={isDarkMode} />
         <TechStackSection themeClasses={themeClasses} isDarkMode={isDarkMode} />
         <ServicesSection themeClasses={themeClasses} isDarkMode={isDarkMode} />
-        <HowItWorksSection themeClasses={themeClasses} isDarkMode={isDarkMode} />
+        <HowItWorksSection themeClasses={themeClasses} isDarkMode={isDarkMode}/>
         <DisclaimersSection themeClasses={themeClasses} />
+        <TheTeamSection themeClasses={themeClasses} isDarkMode={isDarkMode} />
         <ContactSection themeClasses={themeClasses} isDarkMode={isDarkMode} />
         <FooterSection themeClasses={themeClasses} />
       </div>
     </div>
-  )
+  );
 }
