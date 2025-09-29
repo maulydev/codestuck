@@ -33,7 +33,7 @@ export default function TheTeamSection({
     },
     {
       name: "Kenneth Lumor",
-      role: "Fullstack Python Developer",
+      role: "Fullstack Developer",
       description:
         "Fullstack developer building complete web applications with Flask and FastAPI. Skilled at designing end-to-end solutions, combining frontend and backend seamlessly to deliver efficient and modern applications.",
       image: "https://avatar.iran.liara.run/public/12",
@@ -56,7 +56,7 @@ export default function TheTeamSection({
         </div>
 
         {/* Team Grid */}
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-3 gap-8">
           {team.map((member, index) => (
             <Card
               key={index}

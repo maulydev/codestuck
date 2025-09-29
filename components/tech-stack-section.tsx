@@ -19,7 +19,7 @@ export function TechStackSection({ themeClasses, isDarkMode }: TechStackSectionP
       category: "Backend",
       icon: Server,
       color: "text-green-400",
-      technologies: ["Python", "Flask", "Node JS", "Django Rest Framework", "Express JS"],
+      technologies: ["Python", "Flask", "Node JS", "FastAPI", "Django Rest Framework", "Express JS",],
     },
     {
       category: "Mobile",
@@ -60,7 +60,7 @@ export function TechStackSection({ themeClasses, isDarkMode }: TechStackSectionP
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="space-y-2 flex items-center justify-center flex-wrap">
+                <div className="gap-2 flex items-center justify-center flex-wrap">
                   {stack.technologies.map((tech, techIndex) => (
                     <Badge
                       key={techIndex}
