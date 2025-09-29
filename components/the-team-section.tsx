@@ -33,9 +33,9 @@ export default function TheTeamSection({
     },
     {
       name: "Kenneth Lumor",
-      role: "Fullstack Flask Developer",
+      role: "Fullstack Python Developer",
       description:
-        "Fullstack developer building complete web applications with Flask. Experienced in designing end-to-end solutions, integrating frontend and backend seamlessly for smooth user experiences.",
+        "Fullstack developer building complete web applications with Flask and FastAPI. Skilled at designing end-to-end solutions, combining frontend and backend seamlessly to deliver efficient and modern applications.",
       image: "https://avatar.iran.liara.run/public/12",
       github: "https://github.com/Kennarttechl",
       linkedin: "https://linkedin.com/in/kennart-foundation-449907282/",
