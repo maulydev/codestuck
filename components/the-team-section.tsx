@@ -31,6 +31,15 @@ export default function TheTeamSection({
       github: "https://github.com/desi-10",
       linkedin: "https://linkedin.com/in/desmond-kudjuh-375221278/",
     },
+    {
+      name: "Kenneth Lumor",
+      role: "Fullstack Flask Developer",
+      description:
+        "Fullstack developer building complete web applications with Flask. Experienced in designing end-to-end solutions, integrating frontend and backend seamlessly for smooth user experiences.",
+      image: "https://avatar.iran.liara.run/public/12",
+      github: "https://github.com/Kennarttechl",
+      linkedin: "https://linkedin.com/in/kennart-foundation-449907282/",
+    },
   ];
 
   return (
