@@ -40,6 +40,15 @@ export default function TheTeamSection({
       github: "https://github.com/Kennarttechl",
       linkedin: "https://linkedin.com/in/kennart-foundation-449907282/",
     },
+    {
+      name: "Bernard Tay",
+      role: "Fullstack Developer",
+      description:
+        "Fullstack developer specializing in React, Next.js, React Native, FastAPI, and Django REST Framework. Experienced in building scalable applications with seamless frontend and backend integration.",
+      image: "https://avatar.iran.liara.run/public/16",
+      github: "https://github.com/Bheny",
+      linkedin: "https://linkedin.com/in/bernard-kojo-tay/",
+    },
   ];
 
   return (
@@ -56,7 +65,7 @@ export default function TheTeamSection({
         </div>
 
         {/* Team Grid */}
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 gap-8">
           {team.map((member, index) => (
             <Card
               key={index}
